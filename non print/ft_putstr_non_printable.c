@@ -27,7 +27,7 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] <= '\n')
+		if (str[i] <= 31)
 		{
 			temp = str[i];
 			hex = temp % 16;
