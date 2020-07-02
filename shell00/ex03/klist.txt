@@ -1,0 +1,5 @@
+Credentials cache: API:705F51D9-FDFA-48C3-B15C-3E8BA2125945
+        Principal: gpaul@42.FR
+
+  Issued                Expires               Principal
+Jun 29 10:42:32 2020  Jul  6 10:42:22 2020  krbtgt/42.FR@42.FR
