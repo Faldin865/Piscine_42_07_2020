@@ -1,54 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 17:31:21 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/03 16:44:14 by gpaul            ###   ########.fr       */
+/*   Created: 2020/07/03 10:34:55 by gpaul             #+#    #+#             */
+/*   Updated: 2020/07/05 13:59:57 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_hex_print(char str)
-{
-	int hex;
-
-	hex = str % 16;
-	if (hex < 10)
-	{
-		ft_putchar('\\');
-		ft_putchar(48 + str / 16);
-		ft_putchar(48 + hex);
-	}
-	else
-	{
-		ft_putchar('\\');
-		ft_putchar(48 + str / 16);
-		ft_putchar(87 + hex);
-	}
-}
-
-void	ft_putstr_non_printable(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int i;
+	int n;
 
+	n = 0;
 	i = 0;
+	if (*to_find == '\0')
+		return (str);
 	while (str[i])
 	{
-		if (str[i] <= 31 || str[i] == 127)
+		while (str[i] == to_find[n] && to_find[n])
 		{
-			ft_hex_print(str[i]);
 			i++;
+			n++;
 		}
-		ft_putchar(str[i]);
+		if (to_find[n] == '\0')
+			return (&str[i - n]);
+		else
+		{
+			i = i - n;
+			n = 0;
+		}
 		i++;
 	}
+	return (0);
 }

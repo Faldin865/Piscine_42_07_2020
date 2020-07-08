@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 20:26:26 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/03 10:05:24 by gpaul            ###   ########.fr       */
+/*   Created: 2020/07/02 18:32:09 by gpaul             #+#    #+#             */
+/*   Updated: 2020/07/04 10:55:22 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putstr_non_printable(char *str);
-
-int		main(void)
+int		ft_strcmp(char *s1, char *s2)
 {
-	char *str = "Coucou\n \a \b \? \\ tu vas bien ?";
+	int i;
 
-	ft_putstr_non_printable(str);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] && s2[i])
+		i++;
+	if (s1[i] > s2[i])
+		return (1);
+	if (s1[i] < s2[i])
+		return (-1);
+	else
+		return (0);
 }

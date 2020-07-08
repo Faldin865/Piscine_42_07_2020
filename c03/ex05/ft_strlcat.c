@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/01 21:11:40 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/03 10:16:02 by gpaul            ###   ########.fr       */
+/*   Created: 2020/07/03 11:45:52 by gpaul             #+#    #+#             */
+/*   Updated: 2020/07/05 18:17:51 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_printable(char *str)
+int				ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
-	{
-		if (!(str[i] >= 32 && str[i] <= 126))
-			return (0);
 		i++;
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	unsigned int n;
+	unsigned int i;
+
+	n = 0;
+	i = 0;
+	while (dest[i])
+		i++;
+	if (size <= i)
+		return (size + ft_strlen(src));
+	while (src[n] && i + n + 1 < size)
+	{
+		dest[i + n] = src[n];
+		n++;
 	}
-	return (1);
+	if (i != size)
+		dest[i + n] = '\0';
+	return (i + ft_strlen(src));
 }

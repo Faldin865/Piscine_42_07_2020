@@ -1,1 +1,1 @@
-ifconfig -a link | grep -o 'ether .*' | cut -c7- | rev | cut -c2-| rev | cat -e
+ifconfig -a link | grep -o 'ether .*' | cut -c7- | rev | cut -c2-| rev 

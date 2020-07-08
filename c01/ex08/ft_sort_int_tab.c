@@ -6,23 +6,23 @@
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 16:43:10 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/01 16:59:31 by gpaul            ###   ########.fr       */
+/*   Updated: 2020/07/01 20:06:32 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_sort_int_tab(int *tab, int size)
+void	ft_sort_int_tab(int *tab, int size)
 {
 	int i;
 	int temp;
 
 	i = 0;
 	temp = 0;
-	while ( size > i)
+	while (size > i)
 	{
 		if (tab[i - 1] > tab[i] && i != 0)
 		{
 			temp = tab[i];
-			tab[i] = tab [i - 1];
+			tab[i] = tab[i - 1];
 			tab[i - 1] = temp;
 			i = 0;
 		}

@@ -6,11 +6,11 @@
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 15:31:27 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/01 16:42:52 by gpaul            ###   ########.fr       */
+/*   Updated: 2020/07/01 20:05:28 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_rev_int_tab(int *tab, int size)
+void	ft_rev_int_tab(int *tab, int size)
 {
 	int i;
 	int temp;
