@@ -5,26 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 18:24:00 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/10 11:27:26 by gpaul            ###   ########.fr       */
+/*   Created: 2020/07/09 19:25:13 by gpaul             #+#    #+#             */
+/*   Updated: 2020/07/10 12:29:03 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+
 #include <stdio.h>
 
-char **ft_split(char *str, char *charset);
-
-int			main(void)
+int		main(void)
 {
-	int		i = 0;
-	char	*str = "54salut444ca8452va0123et56";
-	char	*charset = "0123456789";
-	char	**re;
+	char *nbr = "-+15";
+	char *base_from = "0123456789";
+	char *base_to = "01";
 
-	re = ft_split(str, charset);
-	while (re[i])
-	{
-		printf("%s\n", re[i]);
-		i++;
-	}
+	printf("%s\n", ft_convert_base(nbr, base_from, base_to));
 }
