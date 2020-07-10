@@ -6,7 +6,7 @@
 /*   By: gpaul <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 19:31:07 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/10 10:28:35 by gpaul            ###   ########.fr       */
+/*   Updated: 2020/07/10 11:27:54 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ int			ft_count_word(char *str, char *charset)
 	i = 0;
 	while (str[i])
 	{
-
+		n = 0;
 		while (str[i] && ft_sep(str[i], charset) == 1)
 			i++;
-		while (str[i] && ft_sep(str[i], charset) == 0)
+		while (str[i] && ft_sep(str[i], charset) == 0 && ++n)
 			i++;
-		word++;
+		if (n > 0)
+			word++;
 	}
 	return (word);
 }
@@ -58,7 +59,6 @@ char		**ft_mem(char *str, char *charset, char **re)
 	while (str[i])
 	{
 		n = 0;
-
 		while (str[i] && ft_sep(str[i], charset) == 1)
 			i++;
 		while (str[i] && ft_sep(str[i], charset) == 0)
@@ -67,8 +67,11 @@ char		**ft_mem(char *str, char *charset, char **re)
 			n++;
 		}
 		if (n > 0)
-			re[x] = malloc(sizeof(char) * n);
-		x++;
+		{
+			if (!(re[x] = malloc(sizeof(char) * n)))
+				return (0);
+			x++;
+		}
 	}
 	return (re);
 }
@@ -85,7 +88,6 @@ char		**ft_alloc(char *str, char *charset, char **re, int i)
 	{
 		x = 0;
 		n = 0;
-
 		while (str[i] && ft_sep(str[i], charset) == 1)
 			i++;
 		while (str[i] && ft_sep(str[i], charset) == 0 && ++n)
@@ -113,8 +115,6 @@ char		**ft_split(char *str, char *charset)
 	if (!(re = malloc(sizeof(char*) * (ft_count_word(src, charset) + 1))))
 		return (0);
 	re = ft_mem(src, charset, re);
-	while (ft_sep(str[i], charset) == 1)
-		i++;
 	re = ft_alloc(src, charset, re, i);
 	re[ft_count_word(src, charset)] = 0;
 	return (re);
