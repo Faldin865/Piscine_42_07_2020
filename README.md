@@ -1,3 +1,3 @@
 WESH
 gpaul au voxotron
-Amdedieu zi stud
+A nom de code stud
