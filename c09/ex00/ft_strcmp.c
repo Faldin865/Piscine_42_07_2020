@@ -6,7 +6,7 @@
 /*   By: gpaul <gpaul@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:37:54 by gpaul             #+#    #+#             */
-/*   Updated: 2020/07/14 14:47:24 by gpaul            ###   ########.fr       */
+/*   Updated: 2020/07/16 19:00:04 by gpaul            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@ int		ft_strcmp(char *s1, char *s2)
 	int i;
 
 	i = 0;
-	while (s1[i] == s2[i])
+	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
-	if (s1[i] == '\0' && s2[i] == '\0')
-		return (0);
-	else if (s1[i] == '\0' && s2[i] != '\0')
-		return (-1);
-	else
-		return (1);
+	return (s1[i] - s2[i]);
 }
