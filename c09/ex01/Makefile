@@ -6,29 +6,35 @@
 #    By: gpaul <gpaul@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/14 19:12:33 by gpaul             #+#    #+#              #
-#    Updated: 2020/07/15 18:19:57 by gpaul            ###   ########.fr        #
+#    Updated: 2020/07/16 13:52:07 by gpaul            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-PARAMS = -Wall -Wextra -Werror 
 
-SRCS = srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c srcs/ft_swap.c
-OUTPUT = srcs/ft_putchar.o srcs/ft_putstr.o srcs/ft_strcmp.o srcs/ft_strlen.o srcs/ft_swap.o
+SRCS = ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
 
-INCLUDES = includes/ft.h
+D_OBJS = srcs
 
-all : $(NAME)
+D_HEADER = includes
 
-$(NAME) :
-	gcc $(PARAMS) $(INCLUDES) -c $(SRCS)
-	mv ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o srcs
-	ar rc $(NAME) $(OUTPUT)
+OBJS := ${patsubst %.c, ${D_OBJS}/%.o, ${SRCS}}
 
-clean : all
-	rm -rf $(OUTPUT)
+CC = gcc
 
-fclean : clean
-	rm -rf $(NAME)
+CFLAGS = -Wall -Werror -Wextra
 
-re : fclean all
+all :		${NAME}
+
+${NAME} :	${OBJS}
+	ar rc ${NAME} ${OBJS}
+clean :
+		rm -f ${OBJS}
+
+fclean :	clean
+		rm -f ${NAME}
+
+re :		fclean all
+
+${D_OBJS}/%.o : ${D_OBJS}/%.c
+	${CC} ${CFLAGS} -I${D_HEADER} -c $< -o $@
